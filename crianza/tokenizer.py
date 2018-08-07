@@ -5,7 +5,7 @@ Copyright (C) 2015 Christian Stigen Larsen
 Distributed under the BSD 3-Clause license.
 """
 
-from errors import ParseError
+from crianza.errors import ParseError
 
 class Tokenizer:
     # TODO: Require the "enum32" package, then to
@@ -51,7 +51,7 @@ class Tokenizer:
             if char != '\\' and quote:
                 quote = False
 
-        return filter(lambda (t,p): p!="", v)
+        return filter(lambda t, p: p!="", v)
 
     def parse_number(self, s):
         """Parses integers in bases 10 and 16 and floats."""

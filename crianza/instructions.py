@@ -2,8 +2,8 @@
 Contains a collection of useful instructions, or machine primivites.
 """
 
-import errors
-import interpreter
+from crianza import errors
+from crianza import interpreter
 
 def _assert_number(*args):
     for arg in args:
@@ -224,7 +224,7 @@ def if_stmt(vm):
         vm.push(false_clause)
 
 def jmp(vm):
-    if not (isinstance(vm.top, int) or isinstance(vm.top, long)):
+    if not (isinstance(vm.top, int)):
         raise errors.MachineError("Jump address must be an integer: %s" %
                 str(vm.top))
     addr = vm.pop()

@@ -1,0 +1,16 @@
+{
+  "tests/crianza_test.py::TestCrianza": true,
+  "tests/crianza_test.py::TestCrianza::test_eval": true,
+  "tests/crianza_test.py::TestCrianza::test_io": true,
+  "tests/crianza_test.py::TestCrianza::test_optimizer": true,
+  "tests/crianza_test.py::TestCrianza::test_parser": true,
+  "tests/crianza_test.py::TestCrianza::test_program_even_odd": true,
+  "tests/crianza_test.py::TestCrianza::test_program_fibonacci": true,
+  "tests/crianza_test.py::TestCrianza::test_program_fibonacci_1": true,
+  "tests/crianza_test.py::TestCrianza::test_program_fibonacci_2": true,
+  "tests/crianza_test.py::TestCrianza::test_program_subroutine_1": true,
+  "tests/crianza_test.py::TestCrianza::test_program_sum_mul_1": true,
+  "tests/crianza_test.py::TestCrianza::test_program_sum_mul_2": true,
+  "tests/crianza_test.py::TestCrianza::test_random_arithmetic": true,
+  "tests/crianza_test.py::TestCrianzaNative": true
+}

@@ -1,10 +1,6 @@
-from .compiler import (check, compile)
+from .compiler import check, compile
 from .errors import CompileError, MachineError, ParseError
 from .instructions import lookup
-from .optimizer import constant_fold, optimized
-from .parser import (parse, parse_stream)
-from .repl import repl, print_code
-from .stack import Stack
 from .interpreter import (
     Machine,
     code_to_string,
@@ -16,6 +12,10 @@ from .interpreter import (
     isnumber,
     isstring,
 )
+from .optimizer import constant_fold, optimized
+from .parser import (parse, parse_stream)
+from .repl import repl, print_code
+from .stack import Stack
 
 __author__ = "Christian Stigen Larsen"
 __copyright__ = "Copyright (C) 2015 Christian Stigen Larsen"
@@ -25,7 +25,6 @@ __version__ = "0.1.9"
 
 __all__ = [
     "CompileError",
-    "Instruction",
     "Machine",
     "MachineError",
     "ParseError",

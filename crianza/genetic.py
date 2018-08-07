@@ -21,14 +21,14 @@ def tanimoto_coefficient(a, b):
         1.0 if the two points completely overlap,
         0.0 if the two points are infinitely far apart.
     """
-    return sum(map(lambda (x,y): float(x)*float(y), zip(a,b))) / sum([
-          -sum(map(lambda (x,y): float(x)*float(y), zip(a,b))),
+    return sum(map(lambda x, y: float(x)*float(y), zip(a,b))) / sum([
+          -sum(map(lambda x, y: float(x)*float(y), zip(a,b))),
            sum(map(lambda x: float(x)**2, a)),
            sum(map(lambda x: float(x)**2, b))])
 
 def weighted_tanimoto(a, b, weights):
     """Same as the Tanimoto coefficient, but wit weights for each dimension."""
-    weighted = lambda s: map(lambda (x,y): float(x)*float(y), zip(s, weights))
+    weighted = lambda s: map(lambda x, y: float(x)*float(y), zip(s, weights))
     return tanimoto_coefficient(weighted(a), weighted(b))
 
 def average(sequence, key):
@@ -111,7 +111,7 @@ def randomize(vm,
 
     instructions = list(instructions)
 
-    for _ in xrange(random.randint(*length)):
+    for _ in range(random.randint(*length)):
         r = random.random()
         if r <= instruction_ratio:
             # Generate a random instruction
@@ -122,7 +122,7 @@ def randomize(vm,
         else:
             # Generate a random string
             vm.code.append(crianza.compiler.make_embedded_push('%s' %
-                "".join(chr(random.randint(*chars)) for n in xrange(0,
+                "".join(chr(random.randint(*chars)) for n in range(0,
                     random.randint(*strs)))))
     return vm
 
@@ -258,7 +258,7 @@ def iterate(MachineClass, stop_function=lambda iterations: iterations < 10000,
         b = stochastic_choice(survivors)
         return a.crossover(b)
 
-    generation = map(make_random, xrange(machines))
+    generation = map(make_random, range(machines))
     survivors = generation
 
     if silent:
@@ -293,14 +293,14 @@ def iterate(MachineClass, stop_function=lambda iterations: iterations < 10000,
             # All dead? start with a new set
             if len(survivors) == 0:
                 log("\nNo survivors, restarting")
-                survivors = map(make_random, xrange(machines))
+                survivors = map(make_random, range(machines))
                 generation = survivors
                 continue
 
             # Create a new generation based on the survivors.
             log("crossover ... ")
             cross = lambda _: make_offspring(survivors)
-            generation = map(cross, xrange(machines))
+            generation = map(cross, range(machines))
 
             # Add mutations from time to time
             for m in generation:

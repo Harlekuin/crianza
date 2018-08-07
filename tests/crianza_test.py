@@ -1,5 +1,5 @@
 try:
-    import StringIO
+    from StringIO import StringIO
 except ImportError:
     from io import StringIO
 
@@ -69,7 +69,7 @@ class TestCrianza(unittest.TestCase):
     def test_random_arithmetic(self):
         ops = [operator.mul, operator.add]
         for op in ops:
-            for _ in xrange(100):
+            for _ in range(100):
                 # TODO: Add negative numbers when our parser supports it
                 a = random.randint(0, +(2**31-1))
                 b = random.randint(0, +(2**31-1))
@@ -110,7 +110,7 @@ class TestCrianza(unittest.TestCase):
         sequence = []
         numbers_to_generate = 15
 
-        for its in xrange(0, numbers_to_generate):
+        for its in range(0, numbers_to_generate):
             sequence.append(machine.top)
             machine.run(13) # next number
 
@@ -118,15 +118,15 @@ class TestCrianza(unittest.TestCase):
             233, 377, 610])
 
     def test_io(self):
-        fin = StringIO.StringIO("Input line 1.\nInput line 2.")
-        fout = StringIO.StringIO()
+        fin = StringIO("Input line 1.\nInput line 2.")
+        fout = StringIO()
         result = crianza.eval('123 read "howdy" . .', input=fin, output=fout)
         self.assertEqual(result, 123)
         self.assertEqual(fin.getvalue()[fin.tell():], "Input line 2.")
         self.assertEqual(fout.getvalue(), "howdy\nInput line 1.\n")
 
-    def _execfile(self, filename, input=StringIO.StringIO(),
-            output=StringIO.StringIO(), steps=1000):
+    def _execfile(self, filename, input=StringIO(),
+            output=StringIO(), steps=1000):
         with open(filename, "rt") as f:
             return crianza.execute(f, input=input, output=output, steps=steps)
 
@@ -203,7 +203,7 @@ class TestCrianzaNative(unittest.TestCase):
         self.assertEqual(mul2.__doc__, "Multiplies number with two.")
         self.assertEqual(mul2.__name__, "mul2")
 
-        for n in xrange(100):
+        for n in range(100):
             self.assertEqual(n*2, mul2(n))
 
         for __ in range(10):

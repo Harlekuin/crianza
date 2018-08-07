@@ -1,9 +1,9 @@
 import sys
 
-from compiler import compile, is_embedded_push, get_embedded_push_value
-from errors import ParseError, MachineError, CompileError
-from parser import parse
-from interpreter import isstring, Machine
+from crianza.compiler import compile, is_embedded_push, get_embedded_push_value
+from crianza.errors import ParseError, MachineError, CompileError
+from crianza.parser import parse
+from crianza.interpreter import isstring, Machine
 
 
 def print_code(vm, out=sys.stdout, ops_per_line=8, registers=True):
@@ -58,7 +58,7 @@ def repl(optimize=True, persist=True):
 
     while True:
         try:
-            source = raw_input("> ").strip()
+            source = input("> ").strip()
 
             if source[0] == "." and len(source) > 1:
                 if match(source, ".quit"):
